@@ -1,17 +1,22 @@
-def extract_letters(words):
-    # Si la lista está vacía, entonces un string vacío
-    if not words:
-        return ""
-    
-    result = ""
-    
-    # se recorre cada palabra en la lista
-    for i, word in enumerate(words):
-        # Verifico que la palabra tenga suficientes letras
-        if i < len(word):
-            # se añaden las letras de cada palabra a la cadena resultante
-            result += word[i]
-    
-    return result
+#!/usr/bin/env python3
 
-print(extract_letters(["yoda", "best", "has"]))  # Debería imprimir "yes"
+def nth_letters(words):
+    """
+    words: lista de strings
+    """
+    result = []
+    for i, w in enumerate(words):
+        if len(w) > i:
+            result.append(w[i])
+        else:
+            print(f'La palabra "{w}" no es válida: longitud ({len(w)}) '
+                  f'menor que su posición (i={i}).')
+    return ''.join(result)
+
+
+if __name__ == "__main__":
+    # Caso válido
+    print("Resultado:", nth_letters(["yoda", "best", "has"]))  # "yes"
+    # Caso con palabra demasiado corta
+    print("Resultado:", nth_letters(["uno", "dos", "hi"]))     
+    # Avisará que "hi" no es válida (len=2 <= i=2) y devolverá "ud"
