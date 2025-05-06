@@ -1,13 +1,20 @@
 # Dockerfile
 FROM python:3.10
 
-# Establecer directorio de trabajo\ nWORKDIR /app
+# Establecer directorio de trabajo
 
-# Copiar requisitos e instalar\ nCOPY requirements.txt ./
+# WORKDIR /app
+
+# Copiar requisitos e instalar
+COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiar código fuente\ nCOPY . /app
+# Copiar código de la aplicación
 
-# Exponer puerto\ nEXPOSE 8000
+COPY . /app 
 
-# Comando de arranque\ nCMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Exponer puerto\ 
+EXPOSE 8000
+
+# Comando de arranque\ 
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

@@ -2,7 +2,7 @@
 app/crud/movie.py
 
 Módulo de operaciones CRUD (Create, Read, Update, Delete) para el modelo Movie.
-Incluye funciones para crear, leer, actualizar, marcar como visto y eliminar (borrado lógico).
+Incluye funciones para crear, leer, actualizar, marcar como visto y eliminar.
 """
 from typing import List, Optional
 from sqlmodel import select
